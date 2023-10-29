@@ -12,7 +12,6 @@ export default class MP4Demuxer {
    * 
    * @returns {Promise<void>}
    */
-
   async run(stream, { onConfig, onChunk }) {
     this.#onConfig = onConfig
     this.#onChunk = onChunk
@@ -24,6 +23,7 @@ export default class MP4Demuxer {
    
     this.#file.onError = (error) =>
       console.error('deu ruim mp4Demuxer', error)
+
     return this.#init(stream)
   }
 
@@ -85,7 +85,7 @@ export default class MP4Demuxer {
         _offset += chunk.length
       },
       close: () => {
-        this.#file.flush()
+        this.#file.flush();
       }
     })
 
